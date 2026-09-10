@@ -1,0 +1,41 @@
+import random
+print("Bem vindo ao nosso Mini Supermercado!! Agora Vamos Calular o que e o quanto você pode comprar!!")
+# Calcula IMC e define limite
+peso = float(input("Digite seu peso (kg): "))
+altura = float(input("Digite sua altura (m): "))
+imc = peso / (altura ** 2)
+print(f"Seu IMC é {imc:.2f}")
+
+if imc < 18.5:
+    limite = 2
+elif imc < 25:
+    limite = 5
+elif imc < 30:
+    limite = 3
+else:
+    limite = 1
+print(f"Você pode comprar até {limite} itens.\n")
+
+# Menu de compras
+produtos = {1:("Arroz",20), 2:("Feijão",15), 3:("Carne",36), 4:("Leite",5)}
+total = 0
+for i in range(limite):
+    print("1-Arroz R$20 | 2-Feijão R$15 | 3-Carne R$36 | 4-Leite R$5")
+    op = int(input("Escolha o produto: "))
+    qtd = int(input("Quantidade: "))
+    if op in produtos:
+        nome, preco = produtos[op]
+        total += preco * qtd
+        print(f"Você comprou {qtd}x {nome}. Parcial: R${total:.2f}\n")
+    else:
+        print("Opção inválida!\n")
+
+print(f"Total da compra: R${total:.2f}")
+print("Agora com o Valor da sua compra você pode ganhar um prémio se o número for Par")
+# Jogo Par ou Ímpar
+sorteio = random.randint(1,10)
+print(f"Número sorteado: {sorteio}")
+if sorteio % 2 == 0:
+    print("Resultado: PAR → Você ganhou um PRÊMIO! 🎁 Retire-o no caixa!!")
+else:
+    print("Resultado: ÍMPAR → Não foi dessa vez...")
